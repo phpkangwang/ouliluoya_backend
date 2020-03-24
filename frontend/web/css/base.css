@@ -1,0 +1,37 @@
+html,body{ height: 100%; margin: 0; padding: 0; font-size: 14px; min-height: 100%;}
+html{height:100%}
+body{min-height:100%}
+body, h1, h2, h3, p, div, ol, ul, input, button{
+  margin:0;
+  padding:0;
+  border:0;
+}
+body{
+  font-size:16px;
+  overflow-x: hidden;
+  font-family: Arial,Helvetica,sans-serif;
+}
+body{
+  background:#1b51d8;
+}
+a, body, code, dd, div, dl, dt, em, form, h1, h2, h3, h4, h5, h6, iframe, img, input, label, li, object, ol, p, q, small, span, strong, table, tbody, td, th, tr, ul{
+  margin:0;
+  padding:0;
+  border:0;
+}
+@media screen and (max-width:320px ) {
+    html{font-size: 12px;}
+}
+@media screen and (min-width:321px) and (max-width:750px ) {
+    html{font-size: 14px;}
+}
+@media screen and (min-width:751px ) {
+    html{font-size: 18px;}
+}
+ul li{
+list-style-type:none;
+}
+label{
+  display: block !important;
+  font-weight: normal;
+}

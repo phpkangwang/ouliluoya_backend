@@ -1,0 +1,122 @@
+执行日期：2016-09-02-13：36：33
+【执行的URL】:
+http://shixiangdewei.cn/frontend/web/index.php?r=car/order-pay-success&id=8wxOrderid=4004802001201609022888317090
+
+
+执行日期：2016-09-02-13：36：33
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxc78c73cf4012af64]]></appid>
+<attach><![CDATA[8]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[2]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1380683102]]></mch_id>
+<nonce_str><![CDATA[kf07lzclm4sjzsqewlzydvv205bpq73r]]></nonce_str>
+<openid><![CDATA[o2W1lwq5EFgllSxFn7Ff0DGNBQqc]]></openid>
+<out_trade_no><![CDATA[wxc78c73cf4012af6414727945888]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[20FABE10FEDA7867A1E39556DAAEB296]]></sign>
+<time_end><![CDATA[20160902133633]]></time_end>
+<total_fee>2</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[4004802001201609022888317090]]></transaction_id>
+</xml>
+
+
+执行日期：2016-09-02-13：36：33
+【支付成功】:
+Notify_pub Object
+(
+    [data] => Array
+        (
+            [appid] => wxc78c73cf4012af64
+            [attach] => 8
+            [bank_type] => CFT
+            [cash_fee] => 2
+            [fee_type] => CNY
+            [is_subscribe] => Y
+            [mch_id] => 1380683102
+            [nonce_str] => kf07lzclm4sjzsqewlzydvv205bpq73r
+            [openid] => o2W1lwq5EFgllSxFn7Ff0DGNBQqc
+            [out_trade_no] => wxc78c73cf4012af6414727945888
+            [result_code] => SUCCESS
+            [return_code] => SUCCESS
+            [sign] => 20FABE10FEDA7867A1E39556DAAEB296
+            [time_end] => 20160902133633
+            [total_fee] => 2
+            [trade_type] => JSAPI
+            [transaction_id] => 4004802001201609022888317090
+        )
+
+    [returnParameters] => Array
+        (
+            [return_code] => SUCCESS
+        )
+
+)
+
+
+
+执行日期：2016-09-09-09：52：55
+【执行的URL】:
+http://shixiangdewei.cn/frontend/web/index.php?r=car/order-pay-success&id=49&wxOrderid=4004802001201609093480034500
+
+
+执行日期：2016-09-09-09：52：55
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxc78c73cf4012af64]]></appid>
+<attach><![CDATA[49]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[3]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1380683102]]></mch_id>
+<nonce_str><![CDATA[4v0jw6dul6mjyqscobwicznbst41fa86]]></nonce_str>
+<openid><![CDATA[o2W1lwq5EFgllSxFn7Ff0DGNBQqc]]></openid>
+<out_trade_no><![CDATA[wxc78c73cf4012af64147338596249]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[3A73CFCF1D31E1EE8CF883ACBAFA69AD]]></sign>
+<time_end><![CDATA[20160909095253]]></time_end>
+<total_fee>3</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[4004802001201609093480034500]]></transaction_id>
+</xml>
+
+
+执行日期：2016-09-09-09：52：55
+【支付成功】:
+Notify_pub Object
+(
+    [data] => Array
+        (
+            [appid] => wxc78c73cf4012af64
+            [attach] => 49
+            [bank_type] => CFT
+            [cash_fee] => 3
+            [fee_type] => CNY
+            [is_subscribe] => Y
+            [mch_id] => 1380683102
+            [nonce_str] => 4v0jw6dul6mjyqscobwicznbst41fa86
+            [openid] => o2W1lwq5EFgllSxFn7Ff0DGNBQqc
+            [out_trade_no] => wxc78c73cf4012af64147338596249
+            [result_code] => SUCCESS
+            [return_code] => SUCCESS
+            [sign] => 3A73CFCF1D31E1EE8CF883ACBAFA69AD
+            [time_end] => 20160909095253
+            [total_fee] => 3
+            [trade_type] => JSAPI
+            [transaction_id] => 4004802001201609093480034500
+        )
+
+    [returnParameters] => Array
+        (
+            [return_code] => SUCCESS
+        )
+
+)
+
+
+

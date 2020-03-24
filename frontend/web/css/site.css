@@ -1,0 +1,95 @@
+
+body{
+background:#f5f6fa;
+}
+.divcontent{
+	width:100%;
+	padding:50px;
+	background:#fff;
+	margin:10px auto;
+}
+ .content-item {
+    margin-bottom: 45px;
+}
+ .brief .title {
+    font-size: 45px;
+    color: #333;
+}
+.brief .source {
+	display:block;
+    font-size: 20px;
+    color: #999;
+    font-family: arial,SimSun,helvetica,sans-serif;
+}
+.txt-content {
+    font-size: 30px;
+}
+.pic-content {
+    text-align: center;
+    font-size: 0;
+    margin-bottom: 20px;
+}
+.pic-content img {
+    width: 430px;
+	height: auto;
+}
+.user-act {
+	margin:0 auto;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #ff6d00;
+    width:430px;
+	display:flex;
+	flex-derction:row;
+	justify-content:flex-start;
+    text-align: center;
+    font-size: 20px;
+}
+
+.user-act .vote-act {
+    vertical-align: top;
+    display: inline-block;
+    color: #ccc;
+    font-size: 0;
+    padding: 0 20px;
+    cursor: pointer;
+}
+.user-act .controller .nextbtn .tip {
+    height: 40px;
+    width: 100px;
+}
+.prebtn .tip{
+	height: 40px;
+	width: 110px;
+    
+}
+.vote-act.vote-up .icon {
+width:35px;
+height:35px;
+float:left;
+    background: url(../images/smile.png) no-repeat center;
+}
+.nextbtn .tip{
+border-left:1px solid #ff6d00;
+}
+.prebtn .tip{
+border-right:1px solid #ff6d00;
+}
+.user-act .vote-act.vote-down .icon {
+	float:left;
+	width:35px;
+	height:35px;
+    background: url(../images/cry.png) no-repeat center;
+}
+.vote-act .icon, .user-act .vote-act .vote {
+    font-size: 18px;
+    vertical-align: middle;
+}
+.user-act .controller a .tip {
+    height: 40px;
+	font-size:16px;
+}
+.user-act .vote-act .vote {
+    font-size: 18px;
+    vertical-align: middle;
+}
