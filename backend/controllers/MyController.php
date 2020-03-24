@@ -91,7 +91,7 @@ class MyController extends Controller
 
     public function setPage($page)
     {
-        $this->page = ceil($page);
+        $this->page = $page;
     }
 
     public function sendJson()

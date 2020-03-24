@@ -28,7 +28,11 @@ class BannelController extends MyController
             $data = $BannelModel->tablePage($this->get);
             $count = $BannelModel->tableCount($this->get);
             $this->setData($data);
-            $this->setPage($count);
+            $this->setPage(array(
+                'pageNo' => $this->get['pageNo'],
+                'maxPage' => ceil($count/$this->get['pageSize'] ),
+                'count' => $count,
+            ));
             $this->sendJson();
         } catch (MyException $e) {
             echo $e->toJson($e->getMessage());
