@@ -104,4 +104,17 @@ class Bannel extends BaseModel
         return true;
     }
 
+    /**
+     *  获取最大的排序
+     * @return mixed
+     */
+    public function getMaxSort()
+    {
+        $obj = self::find()->orderBy('sort desc')->asArray()->one();
+        if(empty($obj)){
+            return 0;
+        }else{
+            return $obj['sort'];
+        }
+    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\controllers;
 
 use common\models\AdminUser;
@@ -13,6 +14,45 @@ use common\models\User;
  */
 class BannelController extends MyController
 {
+    private $BannelFilePath = "image";
+
+    public function actionAdd()
+    {
+        try {
+            if (
+                !isset($this->get['bannel_type']) ||
+                !isset($this->get['image_url_str']) ||
+                !isset($this->get['image_type']) ||
+                !isset($this->get['title']) ||
+                !isset($this->get['content'])
+            ) {
+                throw new MyException(ErrorCode::ERROR_PARAM);
+            }
+
+            $imageUrlArr = explode(",",$this->get['image_url_str']);
+            foreach ($imageUrlArr as $imageUrl){
+                $BannelModel = new Bannel();
+                $imageInfo = getimagesize($this->BannelFilePath."/".$imageUrl);
+                //获取最大的排序
+                $sort = $BannelModel->getMaxSort() + 1;
+                $postData = array(
+                    'bannel_type' => $this->get['bannel_type'],
+                    'image_url' => $imageUrl,
+                    'image_width' => isset($imageInfo) ? $imageInfo[0] : 0,
+                    'image_height' => isset($imageInfo) ? $imageInfo[1] : 0,
+                    'image_type' => $this->get['image_type'],
+                    'title' => $this->get['title'],
+                    'content' => $this->get['content'],
+                    'sort' => $sort,
+                );
+                $BannelModel->add($postData);
+            }
+            $this->sendJson();
+        } catch (MyException $e) {
+            echo $e->toJson($e->getMessage());
+        }
+    }
+
     //分页获取数据
     public function actionPage()
     {
@@ -30,7 +70,7 @@ class BannelController extends MyController
             $this->setData($data);
             $this->setPage(array(
                 'pageNo' => $this->get['pageNo'],
-                'maxPage' => ceil($count/$this->get['pageSize'] ),
+                'maxPage' => ceil($count / $this->get['pageSize']),
                 'count' => $count,
             ));
             $this->sendJson();
@@ -46,20 +86,20 @@ class BannelController extends MyController
     {
         try {
             if (
-                !isset($this->get['id'])
+            !isset($this->get['id'])
             ) {
                 throw new MyException(ErrorCode::ERROR_PARAM);
             }
             $id = $this->get['id'];
             $BannelModel = new Bannel();
             $BannelObj = $BannelModel->findOne($id);
-            if(empty($BannelObj)){
+            if (empty($BannelObj)) {
                 throw new MyException(ErrorCode::ERROR_PARAM);
             }
 
-            if($BannelObj->status == 1){
+            if ($BannelObj->status == 1) {
                 $postData['status'] = 2;
-            }else{
+            } else {
                 $postData['status'] = 1;
             }
             $BannelObj->add($postData);
@@ -85,7 +125,7 @@ class BannelController extends MyController
             $direction = $this->get['direction'];
             $BannelModel = new Bannel();
             $BannelObj = $BannelModel->findOne($id);
-            if(empty($BannelObj)){
+            if (empty($BannelObj)) {
                 throw new MyException(ErrorCode::ERROR_PARAM);
             }
             //交换两个排序
@@ -103,16 +143,32 @@ class BannelController extends MyController
     {
         try {
             if (
-                !isset($this->get['ids'])
+            !isset($this->get['ids'])
             ) {
                 throw new MyException(ErrorCode::ERROR_PARAM);
             }
             $ids = $this->get['ids'];
-            $idArr = explode(",",$ids);
-            Bannel::deleteAll(['id'=>$idArr]);
+            $idArr = explode(",", $ids);
+            Bannel::deleteAll(['id' => $idArr]);
             $this->sendJson();
         } catch (MyException $e) {
             echo $e->toJson($e->getMessage());
         }
+    }
+
+    /**
+     *   上传文件
+     */
+    public function actionUploadFile()
+    {
+        $imgname = $_FILES['file']['name'];
+        $imgnameArr = explode(".", $imgname);
+        $imgname = date("Y_m_d_H_i_s", time()) . "_" . rand(10000, 99999) . "." . end($imgnameArr);
+        $tmp = $_FILES['file']['tmp_name'];
+        if (move_uploaded_file($tmp, $this->BannelFilePath ."/". $imgname)) {
+            $this->setData($imgname);
+        } else {
+        }
+        $this->sendJson();
     }
 }
