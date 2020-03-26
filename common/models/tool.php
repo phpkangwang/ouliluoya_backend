@@ -58,9 +58,54 @@ class tool extends Model
      */
     public static function getIp()
     {
-        return Yii::$app->getRequest()->getUserIP();
+        $onlineip = 'Unknown';
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ips = explode(",", $_SERVER['HTTP_X_FORWARDED_FOR']);
+            $real_ip = $ips['0'];
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $real_ip))
+            {
+                $onlineip = $real_ip;
+            }
+            elseif ($_SERVER['HTTP_CLIENT_IP'] && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER['HTTP_CLIENT_IP']))
+            {
+                $onlineip = $_SERVER['HTTP_CLIENT_IP'];
+            }
+        }
+        if ($onlineip == 'Unknown' && isset($_SERVER['HTTP_CDN_SRC_IP']) && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER['HTTP_CDN_SRC_IP']))
+        {
+            $onlineip = $_SERVER['HTTP_CDN_SRC_IP'];
+            $c_agentip = 0;
+        }
+        if ($onlineip == 'Unknown' && isset($_SERVER['HTTP_NS_IP']) && preg_match ( '/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER ['HTTP_NS_IP'] ))
+        {
+            $onlineip = $_SERVER ['HTTP_NS_IP'];
+            $c_agentip = 0;
+        }
+        if ($onlineip == 'Unknown' && isset($_SERVER['REMOTE_ADDR']) && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER['REMOTE_ADDR']))
+        {
+            $onlineip = $_SERVER['REMOTE_ADDR'];
+            $c_agentip = 0;
+        }
+        return $onlineip;
     }
-    
+
+    public static function getIpAddress($ip){
+        if( $ip == "127.0.0.1"){
+            return "本地网络";
+        }else{
+            $IpModel = new Ip();
+            $IpAddress = $IpModel->getIpAddress($ip);
+            if( empty($IpAddress)){
+                $url = "http://ip-api.com/json/".$ip."?lang=zh-CN";
+                $address = self::getCurl($url);
+                $IpAddress = $address['regionName']."_".$address['city'];
+                $IpModel->addIp($ip, $IpAddress);
+            }
+            return $IpAddress;
+        }
+        //$url = "http://ip.taobao.com/service/getIpInfo.php?ip={$ip}";
+    }
     
     /**
      *  单文件上传
