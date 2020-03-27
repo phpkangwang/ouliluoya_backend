@@ -32,14 +32,22 @@ class BannelController extends MyController
             $imageUrlArr = explode(",",$this->get['image_url_str']);
             foreach ($imageUrlArr as $imageUrl){
                 $BannelModel = new Bannel();
-                $imageInfo = getimagesize($this->BannelFilePath."/".$imageUrl);
+                if( $this->get['image_type'] == 1){
+                    $imageInfo = getimagesize($this->BannelFilePath."/".$imageUrl);
+                    $image_width = isset($imageInfo) ? $imageInfo[0] : 0;
+                    $image_height = isset($imageInfo) ? $imageInfo[1] : 0;
+                }else{
+                    $image_width = 0;
+                    $image_height = 0;
+                }
+
                 //获取最大的排序
                 $sort = $BannelModel->getMaxSort() + 1;
                 $postData = array(
                     'bannel_type' => $this->get['bannel_type'],
                     'image_url' => $imageUrl,
-                    'image_width' => isset($imageInfo) ? $imageInfo[0] : 0,
-                    'image_height' => isset($imageInfo) ? $imageInfo[1] : 0,
+                    'image_width' => $image_width,
+                    'image_height' => $image_height,
                     'image_type' => $this->get['image_type'],
                     'title' => $this->get['title'],
                     'content' => $this->get['content'],
