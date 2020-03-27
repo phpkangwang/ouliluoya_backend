@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 namespace backend\controllers;
 
 use common\models\GlobleConfig;
@@ -51,5 +51,5 @@ class SiteController extends Controller
         else
             echo "failse";
         die();
-    }
+     }
 }
