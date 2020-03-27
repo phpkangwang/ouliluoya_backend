@@ -45,7 +45,7 @@ class SiteController extends Controller
         $mail->setTo('474021880@qq.com');
         $mail->setSubject("你的文档有新的通知");
 //$mail->setTextBody('zheshisha ');   //发布纯文字文本
-        $mail->setHtmlBody("你的文档有新的通知，快点过来查看啊1111");    //发布可以带html标签的文本
+        $mail->setHtmlBody("你的文档有新的通知，快点过来查看啊1111333");    //发布可以带html标签的文本
         if($mail->send())
             echo "success";
         else
