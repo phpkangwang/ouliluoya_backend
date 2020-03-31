@@ -179,4 +179,17 @@ class BannelController extends MyController
         }
         $this->sendJson();
     }
+
+    /**
+     *   每个类型bannel的数量
+     */
+    public function actionBannelTypeNum()
+    {
+        $BannelModel = new Bannel();
+        $AdminUserModel = new AdminUser();
+        $data['bannel'] = $BannelModel->bannelTypeNum();
+        $data['admin']  = $AdminUserModel::find()->count();
+        $this->setData($data);
+        $this->sendJson();
+    }
 }
