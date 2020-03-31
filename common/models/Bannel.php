@@ -117,4 +117,17 @@ class Bannel extends BaseModel
             return $obj['sort'];
         }
     }
+
+    /**
+     *   每个类型bannel的数量
+     */
+    public function bannelTypeNum()
+    {
+        $rs = array();
+        $data = self::find()->select('bannel_type,count(*) as num')->groupBy('bannel_type')->asArray()->all();
+        foreach ($data as $key=>$val){
+            $rs[$val['bannel_type']] = $val['num'];
+        }
+        return $rs;
+    }
 }
