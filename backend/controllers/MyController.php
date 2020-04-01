@@ -41,6 +41,7 @@ class MyController extends Controller
     private $NoAccessLimit = [
         'user/login',
         'bannel/upload-file',
+        'bannel/page',
     ];
 
     public function __construct($id,  $module,  $config = [])
