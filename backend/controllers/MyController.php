@@ -42,6 +42,7 @@ class MyController extends Controller
         'user/login',
         'bannel/upload-file',
         'bannel/page',
+        'bannel/get-louceng-pingpai',
     ];
 
     public function __construct($id,  $module,  $config = [])

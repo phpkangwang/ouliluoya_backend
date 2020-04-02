@@ -51,6 +51,7 @@ class BannelController extends MyController
                     'image_type' => $this->get['image_type'],
                     'title' => $this->get['title'],
                     'content' => $this->get['content'],
+                    'append' => isset( $this->get['append'] ) ? $this->get['append'] : "",
                     'sort' => $sort,
                 );
                 $BannelModel->add($postData);
@@ -191,5 +192,25 @@ class BannelController extends MyController
         $data['admin']  = $AdminUserModel::find()->count();
         $this->setData($data);
         $this->sendJson();
+    }
+
+    /**
+     *   获取楼层的所有品牌
+     */
+    public function actionGetLoucengPingpai()
+    {
+        try {
+            if (
+            !isset($this->get['title'])
+            ) {
+                throw new MyException(ErrorCode::ERROR_PARAM);
+            }
+            $model = new Bannel();
+            $data = $model::find()->where('bannel_type = 4 and title = :title',array('title'=>$this->get['title']))->asArray()->all();
+            $this->setData($data);
+            $this->sendJson();
+        } catch (MyException $e) {
+            echo $e->toJson($e->getMessage());
+        }
     }
 }
