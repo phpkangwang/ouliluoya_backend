@@ -206,7 +206,7 @@ class BannelController extends MyController
                 throw new MyException(ErrorCode::ERROR_PARAM);
             }
             $model = new Bannel();
-            $data = $model::find()->where('bannel_type = 4 and title = :title',array('title'=>$this->get['title']))->asArray()->all();
+            $data = $model::find()->where('bannel_type = 4 and title = :title',array('title'=>$this->get['title']))->orderBy('sort asc')->asArray()->all();
             $this->setData($data);
             $this->sendJson();
         } catch (MyException $e) {
