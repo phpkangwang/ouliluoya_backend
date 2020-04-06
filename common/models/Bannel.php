@@ -88,13 +88,18 @@ class Bannel extends BaseModel
      */
     public function ExchangeSort($sort, $direction)
     {
+
         if( $direction == 1){
             //向前交换位置
-            $exchangeObj = self::find()->where('sort < :sort',array(':sort'=>$sort))->orderBy('sort desc')->one();
+            $exchangeObj = self::find()->where('sort < :sort and bannel_type = :bannelType',array(':sort'=>$sort, ':bannelType'=>$this->bannel_type))->orderBy('sort desc')->one();
         }else{
             //向后交换位置
-            $exchangeObj = self::find()->where('sort > :sort',array(':sort'=>$sort))->orderBy('sort asc')->one();
+            $exchangeObj = self::find()->where('sort < :sort and bannel_type = :bannelType',array(':sort'=>$sort, ':bannelType'=>$this->bannel_type))->orderBy('sort asc')->one();
         }
+echo "<pre>";
+        print_r($this);
+print_r($exchangeObj);
+        die;
         if( !empty($exchangeObj)){
             $this->sort = $exchangeObj->sort;
             $exchangeObj->sort = $sort;

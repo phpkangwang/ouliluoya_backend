@@ -41,6 +41,7 @@ class MyController extends Controller
     private $NoAccessLimit = [
         'user/login',
         'bannel/upload-file',
+        'bannel/upload-file1',
         'bannel/page',
         'bannel/get-louceng-pingpai',
     ];

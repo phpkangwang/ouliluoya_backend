@@ -170,10 +170,29 @@ class BannelController extends MyController
      */
     public function actionUploadFile()
     {
+
         $imgname = $_FILES['file']['name'];
         $imgnameArr = explode(".", $imgname);
         $imgname = date("Y_m_d_H_i_s", time()) . "_" . rand(10000, 99999) . "." . end($imgnameArr);
         $tmp = $_FILES['file']['tmp_name'];
+        if (move_uploaded_file($tmp, $this->BannelFilePath ."/". $imgname)) {
+            $this->setData($imgname);
+        } else {
+        }
+        $this->sendJson();
+    }
+
+    /**
+     *   上传文件
+     */
+    public function actionUploadFile1()
+    {
+    //  echo "<pre>";
+    //  print_r($_FILES);die;
+        $imgname = end($_FILES['upfile']['name']);
+        $imgnameArr = explode(".", $imgname);
+        $imgname = date("Y_m_d_H_i_s", time()) . "_" . rand(10000, 99999) . "." . end($imgnameArr);
+        $tmp = end($_FILES['upfile']['tmp_name']);
         if (move_uploaded_file($tmp, $this->BannelFilePath ."/". $imgname)) {
             $this->setData($imgname);
         } else {
