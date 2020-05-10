@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 namespace backend\controllers;
 
 use common\models\GlobleConfig;
