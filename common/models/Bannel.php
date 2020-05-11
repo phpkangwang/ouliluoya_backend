@@ -60,7 +60,7 @@ class Bannel extends BaseModel
     public function tablePage($postData)
     {
         $pageNo   = $postData['pageNo'] < 1 ? 1 : $postData['pageNo'];
-        $pageSize = $postData['pageSize'] < 1 || $postData['pageSize'] > 999 ? 8 : $postData['pageSize'];//默认一页8条数据
+        $pageSize = $postData['pageSize'] < 1 || $postData['pageSize'] > 9999 ? 8 : $postData['pageSize'];//默认一页8条数据
         $limit    = $pageSize;
         $offset   = ($pageNo-1)*$pageSize;
         $where = " 1";
