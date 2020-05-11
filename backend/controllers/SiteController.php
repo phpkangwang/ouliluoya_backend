@@ -52,4 +52,11 @@ class SiteController extends Controller
             echo "failse";
         die();
      }
+
+     //git 自动拉代码
+     public function actionGitPull()
+	 {
+		 exec("git pull 2>&1",$out);
+		 var_export($out);
+	 }
 }
